@@ -1,26 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/layout/Header';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Ourteam from './components/pages/Ourteam';
+import Courses from './components/pages/Courses';
+import Colleges from './components/pages/Colleges';
+import Webinar from './components/pages/Webinar';
+import NotFound from './components/pages/NotFound';
+import Exams from './components/pages/Exams';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="App">
+          <Switch>
+            <Route exact path="/" component={Header} />
+            <Route exact path="/ourteam" component={Ourteam} />
+            <Route exact path="/courses" component={Courses} />
+            <Route exact path="/colleges" component={Colleges} />
+            <Route exact path="/webinar" component={Webinar} />
+            <Route exact path="/exams" component={Exams} />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
